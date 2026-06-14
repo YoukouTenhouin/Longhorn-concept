@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <meta name="theme-color" content="#153f75">
+    <title>Aurora Desktop</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <svg class="svg-sprite" aria-hidden="true">
+      <symbol id="i-home" viewBox="0 0 24 24">
+        <path d="M3 11.5 12 4l9 7.5v8a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>
+      </symbol>
+      <symbol id="i-search" viewBox="0 0 24 24">
+        <circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/>
+      </symbol>
+      <symbol id="i-music" viewBox="0 0 24 24">
+        <path d="M9 18V6l10-2v12"/><circle cx="6" cy="18" r="3"/><circle cx="16" cy="16" r="3"/>
+      </symbol>
+      <symbol id="i-globe" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.3 3 14.7 0 18M12 3c-3 3.3-3 14.7 0 18"/>
+      </symbol>
+      <symbol id="i-star" viewBox="0 0 24 24">
+        <path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1 6.2-5.5-3-5.5 3 1-6.2L3 9.6l6.2-.9z"/>
+      </symbol>
+      <symbol id="i-folder" viewBox="0 0 24 24">
+        <path d="M3 7.5h7l2-2h9v14H3z"/>
+      </symbol>
+      <symbol id="i-image" viewBox="0 0 24 24">
+        <rect x="3" y="4" width="18" height="16" rx="1.5"/><circle cx="9" cy="9" r="2"/><path d="m4 18 5-5 3 3 3-3 5 5"/>
+      </symbol>
+      <symbol id="i-doc" viewBox="0 0 24 24">
+        <path d="M6 3h8l4 4v14H6zM14 3v5h4M9 12h6M9 16h6"/>
+      </symbol>
+      <symbol id="i-mail" viewBox="0 0 24 24">
+        <rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/>
+      </symbol>
+      <symbol id="i-users" viewBox="0 0 24 24">
+        <circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-4 2.4-6 6-6s6 2 6 6M15 15c3.5-.5 6 1.2 6 4.5"/>
+      </symbol>
+      <symbol id="i-calendar" viewBox="0 0 24 24">
+        <rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18M7 14h3M14 14h3M7 17h3"/>
+      </symbol>
+      <symbol id="i-settings" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 0-.1-1l2-1.5-2-3.4-2.4 1A8 8 0 0 0 15 6l-.3-2.5h-4L10.4 6A8 8 0 0 0 8 7.1l-2.3-1-2 3.4 2 1.5a7 7 0 0 0 0 2l-2 1.5 2 3.4 2.3-1a8 8 0 0 0 2.4 1.1l.3 2.5h4L15 18a8 8 0 0 0 2.4-1.1l2.4 1 2-3.4-2-1.5a7 7 0 0 0 .1-1z"/>
+      </symbol>
+      <symbol id="i-back" viewBox="0 0 24 24"><path d="m14.5 5-7 7 7 7"/></symbol>
+      <symbol id="i-forward" viewBox="0 0 24 24"><path d="m9.5 5 7 7-7 7"/></symbol>
+      <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m8 10 4 4 4-4"/></symbol>
+      <symbol id="i-grid" viewBox="0 0 24 24">
+        <rect x="4" y="4" width="6" height="6"/><rect x="14" y="4" width="6" height="6"/><rect x="4" y="14" width="6" height="6"/><rect x="14" y="14" width="6" height="6"/>
+      </symbol>
+      <symbol id="i-list" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4" cy="6" r="1"/><circle cx="4" cy="12" r="1"/><circle cx="4" cy="18" r="1"/></symbol>
+      <symbol id="i-window" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="1.5"/><path d="M3 9h18"/></symbol>
+      <symbol id="i-volume" viewBox="0 0 24 24"><path d="M4 10h4l5-4v12l-5-4H4zM16 9c2 1.5 2 4.5 0 6M19 6c4 3 4 9 0 12"/></symbol>
+      <symbol id="i-wifi" viewBox="0 0 24 24"><path d="M3 9c5-4 13-4 18 0M6 13c3.5-3 8.5-3 12 0M9.5 16.5c1.5-1.2 3.5-1.2 5 0"/><circle cx="12" cy="20" r="1"/></symbol>
+      <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M6.5 19h11a4 4 0 0 0 .4-8A6 6 0 0 0 6.5 9 5 5 0 0 0 6.5 19z"/></symbol>
+      <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 17h12l-1.5-2v-4.5a4.5 4.5 0 0 0-9 0V15zM10 20h4"/></symbol>
+      <symbol id="i-play" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7z"/></symbol>
+      <symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></symbol>
+    </svg>
+
+    <main class="desktop" id="desktop" data-wallpaper="field" data-color-scheme="light" data-scheme-preference="light" data-accent="blue">
+      <div class="wallpaper-credit" id="wallpaperCredit" aria-hidden="true">AURORA / FIELD 01</div>
+
+      <section class="desktop-shortcuts" aria-label="Desktop shortcuts">
+        <button class="desktop-shortcut" type="button">
+          <span class="desktop-icon desktop-icon--computer"><svg><use href="#i-window"/></svg></span>
+          <span>Computer</span>
+        </button>
+        <button class="desktop-shortcut" type="button">
+          <span class="desktop-icon desktop-icon--folder"><svg><use href="#i-folder"/></svg></span>
+          <span>Field Notes</span>
+        </button>
+      </section>
+
+      <section class="app-window" id="explorerWindow" aria-label="Aurora Archive window">
+        <header class="window-header">
+          <div class="titlebar">
+            <div class="window-title">
+              <span class="app-mark"><span></span><span></span><span></span><span></span></span>
+              <span>Aurora Archive</span>
+            </div>
+            <div class="window-actions" aria-label="Window controls">
+              <button type="button" data-window-action="minimize" aria-label="Minimize window"><span class="minimize-mark"></span></button>
+              <button type="button" data-window-action="maximize" aria-label="Maximize window"><span class="maximize-mark"></span></button>
+              <button type="button" data-window-action="close" aria-label="Close window"><span class="close-mark"></span></button>
+            </div>
+          </div>
+
+          <div class="places-bar">
+            <div class="history-controls" aria-label="Navigation history">
+              <button type="button" class="orb-button" aria-label="Go back"><svg><use href="#i-back"/></svg></button>
+              <button type="button" class="orb-button orb-button--small" aria-label="Go forward"><svg><use href="#i-forward"/></svg></button>
+            </div>
+            <nav class="places" aria-label="Places">
+              <button class="place is-active" type="button" data-place="Home">
+                <span class="place-icon"><svg><use href="#i-home"/></svg></span><span>Home</span>
+              </button>
+              <button class="place" type="button" data-place="Discover">
+                <span class="place-icon"><svg><use href="#i-search"/></svg></span><span>Discover</span>
+              </button>
+              <button class="place" type="button" data-place="The Web">
+                <span class="place-icon"><svg><use href="#i-globe"/></svg></span><span>The Web</span>
+              </button>
+              <button class="place" type="button" data-place="Sound">
+                <span class="place-icon"><svg><use href="#i-music"/></svg></span><span>Sound</span>
+              </button>
+              <button class="place" type="button" data-place="Favorites">
+                <span class="place-icon"><svg><use href="#i-star"/></svg></span><span>Favorites</span>
+              </button>
+            </nav>
+            <label class="global-search">
+              <svg><use href="#i-search"/></svg>
+              <span class="sr-only">Search Aurora Archive</span>
+              <input type="search" id="globalSearch" placeholder="Search the archive">
+              <kbd>⌘ K</kbd>
+            </label>
+          </div>
+
+          <nav class="menu-bar" aria-label="Application menu">
+            <button type="button">File</button>
+            <button type="button">Edit</button>
+            <button type="button">View</button>
+            <button type="button">Tools</button>
+            <button type="button">Help</button>
+            <span class="menu-separator"></span>
+            <div class="breadcrumb" aria-label="Current location">
+              <button type="button"><svg><use href="#i-home"/></svg>Archive</button>
+              <span>/</span>
+              <button type="button">Constellations</button>
+              <span>/</span>
+              <strong>Meridian</strong>
+            </div>
+          </nav>
+
+          <div class="command-bar">
+            <button class="command-primary" type="button"><svg><use href="#i-folder"/></svg>New collection</button>
+            <button type="button"><svg><use href="#i-star"/></svg>Add to favorites</button>
+            <button type="button"><svg><use href="#i-cloud"/></svg>Sync</button>
+            <span class="command-spacer"></span>
+            <div class="view-switcher" aria-label="View type">
+              <button class="is-active" type="button" data-view="grid" aria-label="Grid view" aria-pressed="true"><svg><use href="#i-grid"/></svg></button>
+              <button type="button" data-view="list" aria-label="List view" aria-pressed="false"><svg><use href="#i-list"/></svg></button>
+            </div>
+          </div>
+        </header>
+
+        <div class="window-content">
+          <aside class="task-pane" aria-label="Tasks and filters">
+            <section class="task-section is-open">
+              <button class="task-heading" type="button" aria-expanded="true">
+                <span><svg><use href="#i-star"/></svg>Quick tasks</span><svg class="chevron"><use href="#i-chevron"/></svg>
+              </button>
+              <div class="task-section-body">
+                <button type="button"><span class="tiny-icon blue"><svg><use href="#i-folder"/></svg></span>Create a collection</button>
+                <button type="button"><span class="tiny-icon violet"><svg><use href="#i-users"/></svg></span>Share this view</button>
+                <button type="button"><span class="tiny-icon green"><svg><use href="#i-cloud"/></svg></span>Save for offline</button>
+              </div>
+            </section>
+
+            <section class="task-section is-open">
+              <button class="task-heading" type="button" aria-expanded="true">
+                <span><svg><use href="#i-search"/></svg>Filter archive</span><svg class="chevron"><use href="#i-chevron"/></svg>
+              </button>
+              <div class="task-section-body filter-list">
+                <span class="task-label">Look in</span>
+                <button type="button" class="filter-link">The archive</button>
+                <button type="button" class="filter-link">Connected spaces</button>
+                <span class="task-label">Type of item</span>
+                <button type="button" class="filter-link is-selected">Everything <span>42</span></button>
+                <button type="button" class="filter-link">Documents <span>18</span></button>
+                <button type="button" class="filter-link">Pictures <span>14</span></button>
+                <button type="button" class="filter-link">Messages <span>10</span></button>
+              </div>
+            </section>
+
+            <section class="task-section storage-section is-open">
+              <button class="task-heading" type="button" aria-expanded="true">
+                <span><svg><use href="#i-cloud"/></svg>Cloud space</span><svg class="chevron"><use href="#i-chevron"/></svg>
+              </button>
+              <div class="task-section-body">
+                <div class="storage-meter"><span></span></div>
+                <p><strong>68 GB</strong> free of 100 GB</p>
+              </div>
+            </section>
+          </aside>
+
+          <section class="archive" aria-label="Archive contents">
+            <header class="archive-header">
+              <div>
+                <p class="eyebrow">MERIDIAN COLLECTION</p>
+                <h1>Everything, together</h1>
+                <p class="archive-summary"><strong>42 items</strong> from your documents, conversations, and visual library.</p>
+              </div>
+              <div class="archive-sort">
+                <label>Arrange by
+                  <select>
+                    <option>Last opened</option>
+                    <option>Name</option>
+                    <option>Type</option>
+                  </select>
+                </label>
+              </div>
+            </header>
+
+            <section class="content-group messages-group" data-search-group>
+              <div class="group-heading">
+                <div><span class="group-orb group-orb--mail"><svg><use href="#i-mail"/></svg></span><h2>Recent conversations</h2><span class="count">10</span></div>
+                <button type="button">See all</button>
+              </div>
+              <div class="message-list">
+                <button class="message-row selectable" type="button" data-search="marina vale route review northern observatory">
+                  <span class="avatar avatar--coral">MV</span>
+                  <span class="message-person"><strong>Marina Vale</strong><small>Route review</small></span>
+                  <span class="message-preview">The northern observatory sequence is ready for your notes.</span>
+                  <time datetime="2026-06-14T09:42">9:42</time>
+                </button>
+                <button class="message-row selectable" type="button" data-search="orion team field recording tagged">
+                  <span class="avatar avatar--blue">OT</span>
+                  <span class="message-person"><strong>Orion Team</strong><small>Field recording</small></span>
+                  <span class="message-preview">Six new ambient recordings were tagged overnight.</span>
+                  <time datetime="2026-06-13">Yesterday</time>
+                </button>
+                <button class="message-row selectable" type="button" data-search="luc ren archive map draft">
+                  <span class="avatar avatar--green">LR</span>
+                  <span class="message-person"><strong>Luc Ren</strong><small>Archive map</small></span>
+                  <span class="message-preview">I added the missing links to the Meridian draft.</span>
+                  <time datetime="2026-06-12">Jun 12</time>
+                </button>
+              </div>
+            </section>
+
+            <section class="content-group" data-search-group>
+              <div class="group-heading">
+                <div><span class="group-orb group-orb--doc"><svg><use href="#i-doc"/></svg></span><h2>Documents</h2><span class="count">18</span></div>
+                <button type="button">See all</button>
+              </div>
+              <div class="item-grid">
+                <button class="archive-item selectable" type="button" data-search="meridian field guide document">
+                  <span class="document-preview document-preview--guide">
+                    <span class="paper-kicker">FIELD GUIDE / 06</span>
+                    <span class="paper-title">MERIDIAN</span>
+                    <span class="paper-rule"></span><span class="paper-line"></span><span class="paper-line short"></span>
+                    <span class="paper-circle"></span>
+                  </span>
+                  <span class="item-name">Meridian field guide</span><span class="item-meta">Document · 2.4 MB</span>
+                </button>
+                <button class="archive-item selectable" type="button" data-search="light study notes document">
+                  <span class="document-preview document-preview--notes">
+                    <span class="notes-heading">LIGHT STUDY</span>
+                    <span class="notes-block"></span><span class="notes-block"></span><span class="notes-block"></span>
+                    <span class="notes-chart"><i></i><i></i><i></i><i></i></span>
+                  </span>
+                  <span class="item-name">Light study notes</span><span class="item-meta">Document · 860 KB</span>
+                </button>
+                <button class="archive-item selectable" type="button" data-search="station index spreadsheet data">
+                  <span class="document-preview document-preview--sheet">
+                    <span class="sheet-title">STATION INDEX</span>
+                    <span class="sheet-grid"></span>
+                  </span>
+                  <span class="item-name">Station index</span><span class="item-meta">Data sheet · 1.1 MB</span>
+                </button>
+                <button class="archive-item selectable" type="button" data-search="project horizon presentation">
+                  <span class="document-preview document-preview--deck">
+                    <span class="deck-orbit"></span><span class="deck-title">HORIZON</span><span class="deck-subtitle">A study in distance</span>
+                  </span>
+                  <span class="item-name">Project Horizon</span><span class="item-meta">Presentation · 8.7 MB</span>
+                </button>
+              </div>
+            </section>
+
+            <section class="content-group" data-search-group>
+              <div class="group-heading">
+                <div><span class="group-orb group-orb--image"><svg><use href="#i-image"/></svg></span><h2>Visual library</h2><span class="count">14</span></div>
+                <button type="button">See all</button>
+              </div>
+              <div class="item-grid photo-grid">
+                <button class="archive-item selectable" type="button" data-search="amber passage photograph">
+                  <span class="photo-preview photo-preview--amber"><i></i></span>
+                  <span class="item-name">Amber passage</span><span class="item-meta">Photograph</span>
+                </button>
+                <button class="archive-item selectable" type="button" data-search="blue hour photograph">
+                  <span class="photo-preview photo-preview--blue"><i></i></span>
+                  <span class="item-name">Blue hour</span><span class="item-meta">Photograph</span>
+                </button>
+                <button class="archive-item selectable" type="button" data-search="glass forms render">
+                  <span class="photo-preview photo-preview--glass"><i></i><b></b></span>
+                  <span class="item-name">Glass forms</span><span class="item-meta">Render</span>
+                </button>
+                <button class="archive-item selectable" type="button" data-search="signal garden photograph">
+                  <span class="photo-preview photo-preview--garden"><i></i></span>
+                  <span class="item-name">Signal garden</span><span class="item-meta">Photograph</span>
+                </button>
+              </div>
+            </section>
+
+            <div class="empty-state" id="emptyState" hidden>
+              <svg><use href="#i-search"/></svg>
+              <h2>No matching items</h2>
+              <p>Try a broader search term.</p>
+            </div>
+          </section>
+        </div>
+
+        <footer class="status-bar">
+          <span><span class="status-light"></span>All locations are available</span>
+          <span id="selectionStatus">42 items</span>
+        </footer>
+      </section>
+
+      <section class="appearance-window" id="appearanceWindow" aria-label="Desktop appearance settings" hidden>
+        <header class="appearance-titlebar">
+          <div class="window-title">
+            <span class="settings-mark"><svg><use href="#i-settings"/></svg></span>
+            <span>Desktop Appearance</span>
+          </div>
+          <div class="window-actions" aria-label="Appearance window controls">
+            <button type="button" data-appearance-action="minimize" aria-label="Minimize appearance settings"><span class="minimize-mark"></span></button>
+            <button type="button" data-appearance-action="close" aria-label="Close appearance settings"><span class="close-mark"></span></button>
+          </div>
+        </header>
+        <div class="appearance-content">
+          <aside class="settings-nav">
+            <p>Personalize</p>
+            <button class="is-active" type="button"><svg><use href="#i-image"/></svg><span><strong>Desktop</strong><small>Wallpaper and color</small></span></button>
+            <button type="button" disabled><svg><use href="#i-window"/></svg><span><strong>Windows</strong><small>Glass and effects</small></span></button>
+            <button type="button" disabled><svg><use href="#i-star"/></svg><span><strong>Theme</strong><small>Icons and sounds</small></span></button>
+          </aside>
+          <div class="wallpaper-settings">
+            <p class="eyebrow">DESKTOP BACKGROUND</p>
+            <h2>Choose a visual environment</h2>
+            <p class="settings-description">Compare how the glass surfaces respond to dark and bright surroundings.</p>
+            <div class="wallpaper-options" role="group" aria-label="Available wallpapers">
+              <button class="wallpaper-option is-selected" type="button" data-wallpaper-option="field" aria-pressed="true">
+                <span class="wallpaper-preview wallpaper-preview--field"><i></i></span>
+                <span><strong>Amber Field</strong><small>Dark · warm contrast</small></span>
+                <i class="selection-check">✓</i>
+              </button>
+              <button class="wallpaper-option" type="button" data-wallpaper-option="pearl" aria-pressed="false">
+                <span class="wallpaper-preview wallpaper-preview--pearl"><i></i></span>
+                <span><strong>Pearl Current</strong><small>Bright · cool daylight</small></span>
+                <i class="selection-check">✓</i>
+              </button>
+            </div>
+            <section class="accent-settings" aria-labelledby="accentHeading">
+              <div>
+                <p class="eyebrow">PLEX COLOR</p>
+                <h3 id="accentHeading">Main color</h3>
+              </div>
+              <div class="accent-options" role="group" aria-label="Main color presets">
+                <button class="is-selected" type="button" data-accent-option="blue" aria-label="Aurora blue" aria-pressed="true"><span style="--swatch: #3488d4"></span></button>
+                <button type="button" data-accent-option="green" aria-label="Plex green" aria-pressed="false"><span style="--swatch: #4a9f63"></span></button>
+                <button type="button" data-accent-option="red" aria-label="Signal red" aria-pressed="false"><span style="--swatch: #c55454"></span></button>
+                <button type="button" data-accent-option="orange" aria-label="Ember orange" aria-pressed="false"><span style="--swatch: #d17a2f"></span></button>
+                <button type="button" data-accent-option="pink" aria-label="Orchid pink" aria-pressed="false"><span style="--swatch: #c55789"></span></button>
+                <button type="button" data-accent-option="purple" aria-label="Violet dusk" aria-pressed="false"><span style="--swatch: #7b62c4"></span></button>
+                <label class="custom-accent" id="customAccentLabel" title="Custom color">
+                  <input type="color" id="customAccent" value="#3488d4" aria-label="Choose a custom main color">
+                  <span><svg><use href="#i-settings"/></svg></span>
+                </label>
+              </div>
+            </section>
+            <section class="scheme-settings" aria-labelledby="schemeHeading">
+              <div>
+                <p class="eyebrow">INTERFACE COLOR</p>
+                <h3 id="schemeHeading">Application scheme</h3>
+              </div>
+              <div class="scheme-options" role="group" aria-label="Interface color scheme">
+                <button type="button" data-scheme-option="light" aria-pressed="true">
+                  <span class="scheme-swatch scheme-swatch--light"><i></i></span>
+                  <span>Light</span>
+                </button>
+                <button type="button" data-scheme-option="dark" aria-pressed="false">
+                  <span class="scheme-swatch scheme-swatch--dark"><i></i></span>
+                  <span>Dark</span>
+                </button>
+                <button type="button" data-scheme-option="system" aria-pressed="false">
+                  <span class="scheme-swatch scheme-swatch--system"><i></i></span>
+                  <span>System</span>
+                </button>
+              </div>
+            </section>
+            <div class="material-note">
+              <span class="material-note-icon"><svg><use href="#i-image"/></svg></span>
+              <p><strong>Live material preview</strong><span>Glass surfaces and application colors adapt immediately.</span></p>
+            </div>
+          </div>
+        </div>
+        <footer class="appearance-footer">
+          <span id="appearanceStatus" aria-live="polite">Amber Field is active</span>
+          <button type="button" id="appearanceDone">Done</button>
+        </footer>
+      </section>
+
+      <aside class="activity-rail" id="activityRail" aria-label="Activity rail">
+        <header class="profile-card">
+          <div class="profile-avatar">NK</div>
+          <div><strong>Niko K.</strong><span>At the studio</span></div>
+          <span class="presence-dot" title="Online"></span>
+        </header>
+
+        <section class="weather-card">
+          <span class="weather-icon"><i></i></span>
+          <div><strong>21°</strong><span>Clear evening</span></div>
+          <small>PRAGUE</small>
+        </section>
+
+        <section class="rail-section">
+          <header><span>People</span><button type="button" aria-label="People settings">•••</button></header>
+          <button class="person" type="button"><span class="avatar avatar--coral">MV</span><span><strong>Marina</strong><small>Editing a route</small></span><i class="online"></i></button>
+          <button class="person" type="button"><span class="avatar avatar--blue">OT</span><span><strong>Orion</strong><small>3 members active</small></span><i class="online"></i></button>
+          <button class="person" type="button"><span class="avatar avatar--green">LR</span><span><strong>Luc</strong><small>Away for 12 min</small></span><i class="away"></i></button>
+        </section>
+
+        <section class="rail-section">
+          <header><span>Dayline</span><button type="button" aria-label="Open calendar"><svg><use href="#i-calendar"/></svg></button></header>
+          <ol class="dayline">
+            <li><time>15:00</time><span><strong>Review session</strong><small>Meridian room</small></span></li>
+            <li><time>17:30</time><span><strong>Archive sync</strong><small>Automatic</small></span></li>
+          </ol>
+        </section>
+
+        <section class="rail-section inbox-section">
+          <header><span>Inbox</span><span class="rail-badge">3</span></header>
+          <button type="button"><svg><use href="#i-mail"/></svg><span><strong>Route comments</strong><small>Marina · 8 min ago</small></span></button>
+          <button type="button"><svg><use href="#i-cloud"/></svg><span><strong>Sync complete</strong><small>14 new items</small></span></button>
+        </section>
+
+        <section class="now-playing">
+          <div class="album-art"><span></span></div>
+          <div class="track-info"><strong>Low Orbit</strong><span>Forma North</span></div>
+          <button type="button" id="playButton" aria-label="Play"><svg><use href="#i-play"/></svg></button>
+          <div class="track-progress"><span></span></div>
+        </section>
+      </aside>
+
+      <button class="rail-toggle" id="railToggle" type="button" aria-controls="activityRail" aria-expanded="true">
+        <svg><use href="#i-users"/></svg><span class="sr-only">Toggle activity rail</span>
+      </button>
+
+      <section class="start-menu" id="startMenu" aria-label="Start menu" hidden>
+        <header><span class="profile-avatar">NK</span><div><strong>Niko K.</strong><small>Personal workspace</small></div></header>
+        <div class="start-search"><svg><use href="#i-search"/></svg><input type="search" placeholder="Find an application"></div>
+        <div class="start-apps">
+          <button type="button"><span class="start-icon blue"><svg><use href="#i-globe"/></svg></span><span><strong>Navigator</strong><small>Browse spaces</small></span></button>
+          <button type="button"><span class="start-icon violet"><svg><use href="#i-mail"/></svg></span><span><strong>Postbox</strong><small>Messages and mail</small></span></button>
+          <button type="button"><span class="start-icon amber"><svg><use href="#i-image"/></svg></span><span><strong>Gallery</strong><small>Pictures and media</small></span></button>
+          <button type="button" id="controlCenterButton"><span class="start-icon green"><svg><use href="#i-settings"/></svg></span><span><strong>Control center</strong><small>Desktop settings</small></span></button>
+        </div>
+        <footer><button type="button">All applications</button><button type="button">Sign out</button></footer>
+      </section>
+
+      <footer class="taskbar">
+        <button class="start-button" id="startButton" type="button" aria-controls="startMenu" aria-expanded="false">
+          <span class="start-gem"><i></i><i></i><i></i><i></i></span><span>start</span>
+        </button>
+        <span class="taskbar-divider"></span>
+        <button class="task-app is-active" id="taskApp" type="button">
+          <span class="mini-app-mark"><i></i><i></i><i></i><i></i></span>
+          <span>Aurora Archive</span>
+        </button>
+        <button class="task-app appearance-task-app" id="appearanceTaskApp" type="button" hidden>
+          <span class="task-settings-icon"><svg><use href="#i-settings"/></svg></span>
+          <span>Desktop Appearance</span>
+        </button>
+        <div class="taskbar-spacer"></div>
+        <div class="tray">
+          <button type="button" aria-label="Cloud status"><svg><use href="#i-cloud"/></svg></button>
+          <button type="button" aria-label="Network status"><svg><use href="#i-wifi"/></svg></button>
+          <button type="button" aria-label="Volume"><svg><use href="#i-volume"/></svg></button>
+          <button type="button" aria-label="Notifications"><svg><use href="#i-bell"/></svg><span class="notification-dot"></span></button>
+          <time id="clock">--:--</time>
+        </div>
+      </footer>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

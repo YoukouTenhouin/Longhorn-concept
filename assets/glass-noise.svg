@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <filter id="noise" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency=".72" numOctaves="3" seed="27"/>
+    <feColorMatrix type="saturate" values="0"/>
+    <feComponentTransfer>
+      <feFuncR type="linear" slope=".82" intercept=".1"/>
+      <feFuncG type="linear" slope=".9" intercept=".08"/>
+      <feFuncB type="linear" slope="1" intercept=".12"/>
+      <feFuncA type="table" tableValues="0 .18"/>
+    </feComponentTransfer>
+  </filter>
+  <rect width="128" height="128" filter="url(#noise)"/>
+</svg>
